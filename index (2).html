@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design &amp; Technology Revision</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231D9E75'/%3E%3Ctext x='16' y='22' font-family='Inter,Arial,sans-serif' font-weight='700' font-size='13' fill='white' text-anchor='middle' letter-spacing='-0.5'%3EDT%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f7f2;
+  --surface: #ffffff;
+  --surface-2: #f1f4ee;
+  --border: #d1dbc8;
+  --border-strong: #b4c4a8;
+  --text: #1e2a1a;
+  --text-secondary: #4a5c42;
+  --text-muted: #7a8f72;
+  --nav-bg: #2e3d28;
+  --nav-accent: #7faa6a;
+  --hero-bg: #2e3d28;
+  --matcha: #639922;
+  --matcha-mid: #3B6D11;
+  --matcha-dark: #27500A;
+  --matcha-pale: #eaf3de;
+  --matcha-pale-2: #c0dd97;
+  --teal: #0F6E56;
+  --teal-mid: #1D9E75;
+  --teal-pale: #E1F5EE;
+  --teal-pale-2: #9FE1CB;
+  --amber: #854F0B;
+  --amber-mid: #BA7517;
+  --amber-pale: #FAEEDA;
+  --coral: #993C1D;
+  --coral-pale: #FAECE7;
+  --red: #A32D2D;
+  --red-pale: #FCEBEB;
+  --blue: #185FA5;
+  --blue-pale: #E6F1FB;
+  --purple: #534AB7;
+  --purple-pale: #EEEDFE;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 2px solid rgba(159,225,203,0.25);
+  padding: 0 2rem;
+}
+
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 0;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+
+.nav-logo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #ffffff;
+  white-space: nowrap;
+  padding: 0.9rem 1.25rem 0.9rem 0;
+  margin-right: 1.25rem;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  letter-spacing: 0.04em;
+}
+
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: rgba(255,255,255,0.75);
+  padding: 0.9rem 0.85rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+.nav-link:hover { color: #ffffff; }
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--teal-mid);
+  z-index: 200;
+  transition: width 0.1s;
+}
+
+.hero {
+  background: var(--nav-bg);
+  color: #ffffff;
+  padding: 4rem 2rem 3.5rem;
+}
+.hero-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9FE1CB;
+  margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+.hero p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 560px;
+  font-style: italic;
+  line-height: 1.6;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #9FE1CB;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(159,225,203,0.35);
+  border-radius: 4px;
+  padding: 0.35rem 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.wrapper {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 3.5rem 2rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.section-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  color: var(--matcha-dark);
+}
+
+.spec-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  background: var(--matcha-pale);
+  color: var(--matcha-dark);
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  padding: 0.2rem 0.55rem;
+  letter-spacing: 0.05em;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.sub-heading {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.card h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.card-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.18rem 0.5rem;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 0.85rem;
+}
+
+.card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.card li {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.card li::before {
+  content: '\203A';
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--teal-mid);
+  margin-top: 0.05em;
+}
+
+.card-mono {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.uses {
+  margin-top: 0.9rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+.uses-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  background: var(--matcha-pale);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 0.18rem 0.5rem;
+  color: var(--matcha-dark);
+}
+
+.card-wide {
+  grid-column: 1 / -1;
+}
+
+.term-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.term-box {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+}
+
+.term-word {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+  color: var(--matcha-dark);
+}
+
+.term-def {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.r-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.r-card {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 1.1rem;
+  border: 1px solid var(--border);
+}
+
+.r-letter {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 0.45rem;
+  color: var(--teal-mid);
+}
+
+.r-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+
+.r-def {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.tools-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  background: var(--surface);
+}
+
+.tools-table th {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 0.65rem 1rem;
+  border-bottom: 2px solid var(--border);
+  background: var(--surface-2);
+}
+
+.tools-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.tools-table tr:last-child td {
+  border-bottom: none;
+}
+
+.tool-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.sign-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.sign-card {
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.sign-card.red { background: var(--red-pale); border: 1px solid #fca5a5; }
+.sign-card.blue { background: var(--blue-pale); border: 1px solid #93c5fd; }
+.sign-card.yellow { background: var(--amber-pale); border: 1px solid #fcd34d; }
+.sign-card.green-sign { background: var(--teal-pale); border: 1px solid #9FE1CB; }
+
+.sign-type {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.sign-card.red .sign-type { color: var(--red); }
+.sign-card.blue .sign-type { color: var(--blue); }
+.sign-card.yellow .sign-type { color: var(--amber); }
+.sign-card.green-sign .sign-type { color: var(--teal); }
+
+.sign-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.note {
+  background: var(--teal-pale);
+  border-left: 3px solid var(--teal-mid);
+  border-radius: 0 6px 6px 0;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.note strong { color: var(--teal); }
+
+.warning-note {
+  background: var(--amber-pale);
+  border-left: 3px solid #d97706;
+  border-radius: 0 6px 6px 0;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.875rem;
+  color: #78350f;
+  line-height: 1.6;
+}
+
+.warning-note strong { color: #92400e; }
+
+.info-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.4rem;
+}
+
+.info-box h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nav-bg);
+  margin-bottom: 0.9rem;
+}
+
+.law-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.4rem;
+  border-left: 4px solid var(--teal-mid);
+}
+
+.law-card h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nav-bg);
+  margin-bottom: 0.25rem;
+}
+
+.law-card .law-year {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.7rem;
+}
+
+.law-card p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.law-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.law-card li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.law-card li::before {
+  content: '\203A';
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--matcha-mid);
+}
+
+.spec-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--teal);
+  background: var(--teal-pale);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.12rem 0.45rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  letter-spacing: 0.05em;
+}
+
+.flag-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 0.35rem 0.8rem;
+}
+
+.flag.red { background: var(--red-pale); color: var(--red); border: 1px solid #fca5a5; }
+.flag.green { background: var(--teal-pale); color: var(--teal); border: 1px solid #9FE1CB; }
+.flag.amber { background: var(--amber-pale); color: var(--amber); border: 1px solid #fcd34d; }
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.compare-col h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.compare-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.compare-col li {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.coshh-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.coshh-item {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.85rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.coshh-item strong {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 2.5rem 1.25rem 2rem; }
+  .section { padding: 2.5rem 1.25rem; }
+  .two-col, .compare-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="pbar"></div>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo"><span style="display:inline-flex;align-items:center;gap:0.6rem"><span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:var(--teal-mid);font-family:'Inter',sans-serif;font-weight:700;font-size:0.75rem;color:#fff;letter-spacing:-0.01em;flex-shrink:0">DT</span>Design &amp; Technology</span></span>
+    <a href="#plastics" class="nav-link">Plastics</a>
+    <a href="#tools" class="nav-link">Hand Tools</a>
+    <a href="#metals" class="nav-link">Joining Metals</a>
+    <a href="#sustainability" class="nav-link">Sustainability</a>
+    <a href="#safety" class="nav-link">Health &amp; Safety</a>
+    <a href="#legislation" class="nav-link">Legislation</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">WJEC / Eduqas &middot; Component 1</div>
+    <h1>GCSE Design &amp; Technology<br>Revision Guide</h1>
+    <p>Six topics, checked against the WJEC Eduqas specification. Everything required for the written exam.</p>
+    <div class="hero-badge">Verified against WJEC Eduqas GCSE D&amp;T Specification (C600)</div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="section" id="plastics">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Plastics</h2>
+    <span class="spec-badge">Spec &sect;11 &mdash; Polymers</span>
+  </div>
+
+  <div class="info-box" style="margin-bottom:1.75rem">
+    <h3>Where does plastic come from?</h3>
+    <div class="two-col">
+      <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7">Most plastics are made from <strong>oil</strong>, a finite resource created millions of years ago from compressed sea creatures and plants. Because oil takes millions of years to form, plastic is <strong style="color:var(--red)">not sustainable</strong> and will eventually run out.</p>
+      <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7">Many plastics are recyclable, but a large proportion end up in <strong>landfill</strong>, where they <strong style="color:var(--red)">will not biodegrade</strong>. These are the two key sustainability issues examiners expect you to know.</p>
+    </div>
+    <div class="flag-row">
+      <span class="flag red">Not sustainable &mdash; made from finite oil</span>
+      <span class="flag red">Not biodegradable &mdash; stays in landfill</span>
+    </div>
+  </div>
+
+  <p class="sub-heading">Key Terms</p>
+  <div class="term-grid" style="margin-bottom:1.75rem">
+    <div class="term-box"><div class="term-word">Plasticity</div><div class="term-def">The ability to change shape without cracking or breaking.</div></div>
+    <div class="term-box"><div class="term-word">Durability</div><div class="term-def">The ability to withstand wear, weathering and deterioration over time.</div></div>
+    <div class="term-box"><div class="term-word">Thermoplastic</div><div class="term-def">Can be melted and reshaped repeatedly. Much easier to recycle.</div></div>
+    <div class="term-box"><div class="term-word">Thermosetting</div><div class="term-def">Once heated and cooled, holds its form permanently. Difficult to recycle.</div></div>
+    <div class="term-box"><div class="term-word">Biopolymer</div><div class="term-def">A plastic made from biological or plant materials rather than oil. PLA is the key example.</div></div>
+    <div class="term-box"><div class="term-word">Biodegradable</div><div class="term-def">Will break down naturally if buried in the ground. PLA is biodegradable; most plastics are not.</div></div>
+  </div>
+
+  <p class="sub-heading" style="color:var(--matcha-mid)">Thermoplastics <span class="spec-check">Spec</span></p>
+  <div class="grid" style="margin-bottom:1.75rem">
+    <div class="card">
+      <div class="card-accent" style="background:var(--matcha-mid)"></div>
+      <span class="card-tag" style="background:var(--matcha-pale);color:var(--nav-bg)">THERMOPLASTIC</span>
+      <h3>ABS</h3>
+      <p class="card-mono">Acrylonitrile Butadiene Styrene</p>
+      <ul>
+        <li><span>High impact resistance &mdash; tougher than HIPS</span></li>
+        <li><span>Makes high-quality injection mouldings with a glossy finish</span></li>
+        <li><span>Resistant to many chemicals</span></li>
+        <li><span>Takes colours well and retains them</span></li>
+        <li><span>More expensive than HIPS</span></li>
+      </ul>
+      <div class="uses"><div class="uses-label">Examples</div><div class="tags"><span class="tag">Lego bricks</span><span class="tag">Safety helmets</span><span class="tag">Computer casings</span><span class="tag">Phone cases</span></div></div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:var(--blue)"></div>
+      <span class="card-tag" style="background:var(--blue-pale);color:var(--blue)">THERMOPLASTIC</span>
+      <h3>PET</h3>
+      <p class="card-mono">Polyethylene Terephthalate</p>
+      <ul>
+        <li><span>One of the most widely recycled plastics</span></li>
+        <li><span>Excellent water and moisture barrier; also a good gas barrier</span></li>
+        <li><span>Easily blow moulded into bottles</span></li>
+        <li><span>Strong and lightweight</span></li>
+      </ul>
+      <div class="uses"><div class="uses-label">Examples</div><div class="tags"><span class="tag">Water bottles</span><span class="tag">Drinks bottles</span><span class="tag">Food packaging</span></div></div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:#2563eb"></div>
+      <span class="card-tag" style="background:var(--blue-pale);color:var(--blue)">THERMOPLASTIC</span>
+      <h3>Acrylic (PMMA)</h3>
+      <p class="card-mono">Polymethyl Methacrylate</p>
+      <ul>
+        <li><span>Good impact strength; lightweight</span></li>
+        <li><span>Can be polished to a high finish</span></li>
+        <li><span>Available in a wide range of colours</span></li>
+        <li><span>Very commonly used in school workshops</span></li>
+      </ul>
+      <div class="uses"><div class="uses-label">Examples</div><div class="tags"><span class="tag">Display cases</span><span class="tag">Light fittings</span><span class="tag">Baths / Signs</span></div></div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:var(--purple)"></div>
+      <span class="card-tag" style="background:var(--purple-pale);color:var(--purple)">THERMOPLASTIC</span>
+      <h3>Polythene (HDPE / LDPE)</h3>
+      <ul>
+        <li><span>Tough, resistant to chemicals</span></li>
+        <li><span>Flexible &mdash; can be squeezed (LDPE)</span></li>
+        <li><span>Good electrical insulator</span></li>
+        <li><span>Recyclable but large proportion ends up in landfill</span></li>
+      </ul>
+      <div class="uses"><div class="uses-label">Examples</div><div class="tags"><span class="tag">Shampoo bottles</span><span class="tag">Plastic bags</span><span class="tag">Milk bottles</span></div></div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:#0891b2"></div>
+      <span class="card-tag" style="background:#ecfeff;color:#0e7490">THERMOPLASTIC</span>
+      <h3>PVC</h3>
+      <p class="card-mono">Polyvinyl Chloride</p>
+      <ul>
+        <li><span>Very good chemical resistance</span></li>
+        <li><span>Durable, tough and lightweight</span></li>
+        <li><span>Recyclable</span></li>
+      </ul>
+      <div class="uses"><div class="uses-label">Examples</div><div class="tags"><span class="tag">Window frames</span><span class="tag">Pipes</span><span class="tag">Guttering</span></div></div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:#d97706"></div>
+      <span class="card-tag" style="background:var(--amber-pale);color:var(--amber)">THERMOPLASTIC</span>
+      <h3>HIPS</h3>
+      <p class="card-mono">High Impact Polystyrene</p>
+      <ul>
+        <li><span>Tough; high impact strength (but lower than ABS)</span></li>
+        <li><span>Easily injection moulded</span></li>
+        <li><span>Less expensive than ABS; lower quality finish</span></li>
+      </ul>
+      <div class="uses"><div class="uses-label">Examples</div><div class="tags"><span class="tag">Cheaper toys</span><span class="tag">Packaging</span><span class="tag">Printer parts</span></div></div>
+    </div>
+  </div>
+
+  <p class="sub-heading" style="color:var(--red)">Thermosetting Plastics <span class="spec-check">Spec</span></p>
+  <div class="grid" style="margin-bottom:1.75rem">
+    <div class="card">
+      <div class="card-accent" style="background:var(--red)"></div>
+      <span class="card-tag" style="background:var(--red-pale);color:var(--red)">THERMOSETTING</span>
+      <h3>Urea Formaldehyde (UF)</h3>
+      <ul>
+        <li><span>Difficult to recycle</span></li>
+        <li><span>Once heated and cooled, cannot be reformed</span></li>
+        <li><span>Brittle &mdash; will crack rather than bend</span></li>
+        <li><span>Scratch and stain resistant</span></li>
+        <li><span>Gives off toxic fumes if overheated</span></li>
+        <li><span>Stays rigid when heated &mdash; safe for electrical use</span></li>
+      </ul>
+      <div class="uses"><div class="uses-label">Examples</div><div class="tags"><span class="tag">Plug casings</span><span class="tag">Light fittings</span><span class="tag">MDF adhesive binder</span></div></div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:#b45309"></div>
+      <span class="card-tag" style="background:var(--amber-pale);color:var(--amber)">THERMOSETTING</span>
+      <h3>Melamine Formaldehyde (MF)</h3>
+      <ul>
+        <li><span>Hard, durable and scratch resistant</span></li>
+        <li><span>Resistant to water and heat</span></li>
+        <li><span>Cannot be reformed once set</span></li>
+      </ul>
+      <div class="uses"><div class="uses-label">Examples</div><div class="tags"><span class="tag">Kitchen worktops</span><span class="tag">Tableware</span><span class="tag">Laminates</span></div></div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:#7c3aed"></div>
+      <span class="card-tag" style="background:var(--purple-pale);color:var(--purple)">THERMOSETTING</span>
+      <h3>Polyester Resin (PR)</h3>
+      <ul>
+        <li><span>Very water resistant</span></li>
+        <li><span>Hard once cured; cannot be reformed</span></li>
+        <li><span>Good chemical and heat resistance</span></li>
+        <li><span>Brittle on its own &mdash; often reinforced with fibreglass (GRP)</span></li>
+      </ul>
+      <div class="uses"><div class="uses-label">Examples</div><div class="tags"><span class="tag">Boat hulls (GRP)</span><span class="tag">Car body panels</span><span class="tag">Adhesive</span></div></div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:#0f766e"></div>
+      <span class="card-tag" style="background:#f0fdf4;color:#065f46">THERMOSETTING</span>
+      <h3>Epoxy Resin (ER)</h3>
+      <ul>
+        <li><span>Extremely strong adhesive</span></li>
+        <li><span>Two-part system &mdash; resin and hardener mixed together</span></li>
+        <li><span>Excellent resistance to heat and chemicals</span></li>
+        <li><span>Cannot be reformed once cured</span></li>
+      </ul>
+      <div class="uses"><div class="uses-label">Examples</div><div class="tags"><span class="tag">Aerospace adhesive</span><span class="tag">Circuit boards</span><span class="tag">Coatings</span></div></div>
+    </div>
+    <div class="card card-wide" style="background:linear-gradient(135deg,rgba(29,158,117,0.04),rgba(15,110,86,0.02))">
+      <div class="card-accent" style="background:var(--matcha-mid)"></div>
+      <span class="card-tag" style="background:var(--matcha-pale);color:var(--nav-bg)">BIOPOLYMER &middot; THERMOPLASTIC</span>
+      <h3>PLA &mdash; Polylactic Acid</h3>
+      <div class="two-col" style="margin-top:0.5rem">
+        <ul>
+          <li><span>Made from plants (e.g. corn starch) &mdash; <strong>not from oil</strong></span></li>
+          <li><span><strong>Biodegradable</strong> &mdash; breaks down if buried in soil</span></li>
+          <li><span>A biopolymer &mdash; unlike conventional plastics</span></li>
+          <li><span>Used in 3D printers (a CAD/CAM process)</span></li>
+        </ul>
+        <div style="display:flex;flex-direction:column;gap:0.5rem">
+          <div class="flag green">Does not come from oil</div>
+          <div class="flag green">Biodegradable &mdash; decomposes naturally</div>
+          <div class="flag green">Biopolymer &mdash; biological origin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Specification note:</strong> WJEC includes Melamine Formaldehyde (MF) for kitchen worktops and tableware, and Epoxy Resin (ER) as a very strong adhesive used in aerospace. Both are thermosetting plastics. Both may appear in exam questions.
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="section" id="tools">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Hand Tools</h2>
+    <span class="spec-badge">Spec &sect;2.2 &mdash; Designing &amp; Making</span>
+  </div>
+
+  <p class="sub-heading">Measuring Tools</p>
+  <div class="grid grid-2" style="margin-bottom:1.75rem">
+    <div class="card">
+      <div class="card-accent" style="background:var(--matcha-mid)"></div>
+      <h3>Digital Vernier Caliper</h3>
+      <ul style="margin-top:0.6rem">
+        <li><span>Most accurate measuring tool in the workshop</span></li>
+        <li><span>Measures to <strong>0.01mm</strong> (2 decimal places)</span></li>
+        <li><span>Can measure internal and external dimensions</span></li>
+        <li><span>Use when material is approximately 2.5mm thick</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:var(--blue)"></div>
+      <h3>Steel Rule</h3>
+      <ul style="margin-top:0.6rem">
+        <li><span>Accurate to <strong>0.5mm</strong></span></li>
+        <li><span>Used for wood and metal</span></li>
+        <li><span>Measurements in mm and cm</span></li>
+        <li><span>Use when material is approximately 25mm</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:var(--amber)"></div>
+      <h3>Tape Measure</h3>
+      <ul style="margin-top:0.6rem">
+        <li><span>Accurate to <strong>1mm</strong></span></li>
+        <li><span>Used for longer measurements (e.g. a 2.5m board)</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="sub-heading">Tools for Wood</p>
+  <div style="overflow-x:auto;margin-bottom:1.75rem;border-radius:8px;border:1px solid var(--border)">
+    <table class="tools-table">
+      <thead><tr><th>Tool</th><th>Used For</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tool-name">Coping Saw</span></td><td>Curved cuts in thin wood and plastic</td><td>Not for metal</td></tr>
+        <tr><td><span class="tool-name">Tenon Saw</span></td><td>Straight cuts in wood and manufactured board</td><td>Stiff back for accuracy</td></tr>
+        <tr><td><span class="tool-name">Try Square</span></td><td>Drawing lines at exactly 90&deg; to an edge</td><td>Used for marking out joints</td></tr>
+        <tr><td><span class="tool-name">Bench Hook</span></td><td>Holds wood steady when sawing</td><td>Used with tenon saw</td></tr>
+        <tr><td><span class="tool-name">Wood Vice</span></td><td>Holds wood while working</td><td>Has wooden jaws to protect workpiece; fixed to bench</td></tr>
+        <tr><td><span class="tool-name">Wood Plane</span></td><td>Shaves thin strips to create a smooth finish; shapes edges</td><td>Always use along the grain</td></tr>
+        <tr><td><span class="tool-name">Screwdriver (slotted)</span></td><td>Traditional flat-head screw heads</td><td>Lower twisting force</td></tr>
+        <tr><td><span class="tool-name">Screwdriver (Pozi/cross)</span></td><td>Pozi-drive screw heads</td><td>Higher torque without jumping out</td></tr>
+        <tr><td><span class="tool-name">Mallet</span></td><td>Hitting chisels &mdash; not for nails</td><td>Wooden or rubber head</td></tr>
+        <tr><td><span class="tool-name">Pin Hammer</span></td><td>Driving panel pins into thin wood</td><td>Lightweight, small head</td></tr>
+        <tr><td><span class="tool-name">Marking Gauge</span></td><td>Marking lines parallel to a straight edge</td><td>Set to measurement, drag along wood</td></tr>
+        <tr><td><span class="tool-name">Wood Chisel</span></td><td>Removing wood for joints (e.g. mortise joints)</td><td>Use with mallet; put scrap wood underneath</td></tr>
+        <tr><td><span class="tool-name">Rasp / Surform</span></td><td>Shaping and removing wood quickly</td><td>Surform has a perforated blade; rasp is coarser</td></tr>
+        <tr><td><span class="tool-name">Abrasive Paper</span></td><td>Smoothing and finishing wood</td><td><strong>Never write &lsquo;sandpaper&rsquo; in the exam.</strong> Start coarse, finish fine.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="sub-heading">Tools for Metal</p>
+  <div style="overflow-x:auto;margin-bottom:1.25rem;border-radius:8px;border:1px solid var(--border)">
+    <table class="tools-table">
+      <thead><tr><th>Tool</th><th>Used For</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tool-name">Hacksaw</span></td><td>Cutting metal and plastics</td><td>Frame saw with hard blade; blade may snap if misused</td></tr>
+        <tr><td><span class="tool-name">Scriber</span></td><td>Marking lines on metal instead of a pencil</td><td>Very hard steel with sharp point; scribes into surface</td></tr>
+        <tr><td><span class="tool-name">Ball-pein Hammer</span></td><td>Hammering metal; ball end for shaping</td><td>Do not use a mallet on metal</td></tr>
+        <tr><td><span class="tool-name">Files (flat / round / half-round / three-square)</span></td><td>Removing material from metal and plastic</td><td>Coarser = more removed; finer = better finish</td></tr>
+        <tr><td><span class="tool-name">Centre Punch</span></td><td>Making an indentation before drilling</td><td>Prevents drill bit skidding; use with ball-pein hammer</td></tr>
+        <tr><td><span class="tool-name">Tin Snips</span></td><td>Cutting thin sheet steel</td><td>Leaves sharp edge &mdash; wear gloves; faster than hacksaw for thin sheet</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <strong>Exam tip:</strong> Always write &ldquo;abrasive paper&rdquo; not &ldquo;sandpaper&rdquo;. For a question about &ldquo;tools to make a halving joint&rdquo;: try square (marking out), tenon saw (cutting), chisel (removing waste).
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="section" id="metals">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Joining Metals</h2>
+    <span class="spec-badge">Spec &sect;2.2 &mdash; Metals In-depth</span>
+  </div>
+
+  <div class="two-col" style="margin-bottom:1.5rem">
+    <div>
+      <p class="sub-heading" style="color:var(--red)">Permanent Joining</p>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="card">
+          <div class="card-accent" style="background:#d97706"></div>
+          <h3>Soldering (Soft Soldering)</h3>
+          <ul style="margin-top:0.6rem">
+            <li><span>Uses a <strong>low melting point metal</strong> (solder) as filler</span></li>
+            <li><span>Electrically heated soldering iron</span></li>
+            <li><span>Relatively <strong>weak joint</strong></span></li>
+            <li><span>Mainly used for electronic components (circuit boards)</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-accent" style="background:#b45309"></div>
+          <h3>Brazing (Hard Soldering)</h3>
+          <ul style="margin-top:0.6rem">
+            <li><span>Uses a brass filler rod at approximately 800&deg;C &mdash; much hotter than soldering</span></li>
+            <li><span>Uses a gas torch</span></li>
+            <li><span><strong>Stronger than soldering</strong>, weaker than welding</span></li>
+            <li><span>Used for bicycle frames &mdash; bonds steel with brass filler</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-accent" style="background:var(--red)"></div>
+          <h3>Welding</h3>
+          <ul style="margin-top:0.6rem">
+            <li><span><strong>Strongest</strong> method of joining metals</span></li>
+            <li><span>Both pieces are heated, melted and fused together</span></li>
+            <li><span>Steel filler rod &mdash; becomes one piece of steel</span></li>
+          </ul>
+          <div class="uses" style="margin-top:0.9rem">
+            <div class="uses-label">Types</div>
+            <div class="tags" style="margin-top:0.4rem">
+              <span class="tag">Gas (Oxyacetylene) ~2000&deg;C</span>
+              <span class="tag">Arc welding (electric)</span>
+              <span class="tag">MIG welding (fed wire)</span>
+              <span class="tag">Spot welding (thin sheet)</span>
+            </div>
+          </div>
+          <div class="note" style="margin-top:0.9rem">Arc and MIG welding produce <strong>UV light</strong> &mdash; a full welding mask must be worn to protect the eyes from serious damage.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="sub-heading" style="color:var(--blue)">Temporary / Non-Permanent Joining</p>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="card">
+          <div class="card-accent" style="background:var(--blue)"></div>
+          <h3>Nuts, Bolts &amp; Screws</h3>
+          <ul style="margin-top:0.6rem">
+            <li><span>Most common temporary fixing &mdash; can be undone with tools</span></li>
+            <li><span>Different head types: hexagonal, torx, Allen/socket</span></li>
+            <li><span><strong>Spring washers</strong> &mdash; prevent nuts vibrating loose (e.g. motorbike engines)</span></li>
+            <li><span><strong>Nyloc nuts</strong> &mdash; nylon insert grips bolt thread; used in aircraft</span></li>
+            <li><span><strong>Countersinking</strong> &mdash; creates flush surface finish</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-accent" style="background:var(--purple)"></div>
+          <h3>Pop Riveting</h3>
+          <ul style="margin-top:0.6rem">
+            <li><span>Joins thin sheet metal (and acrylic and wood)</span></li>
+            <li><span>Only needs access to <strong>one side</strong> of the material</span></li>
+            <li><span>Technically permanent but can be drilled out</span></li>
+            <li><span>Used on aircraft fuselages and sheet metal products</span></li>
+            <li><span>Process: drill hole &rarr; insert rivet &rarr; pull pin until it shears &rarr; surfaces pulled together</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-accent" style="background:var(--matcha-mid)"></div>
+          <h3>Thread Cutting (Taps &amp; Dies)</h3>
+          <ul style="margin-top:0.6rem">
+            <li><span><strong>Tap</strong> &mdash; cuts internal thread inside a hole</span></li>
+            <li><span><strong>Die</strong> &mdash; cuts external thread on a rod</span></li>
+            <li><span>Turn a couple of turns then back to clear cuttings</span></li>
+            <li><span>Used in mild steel and non-ferrous metals</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="section" id="sustainability">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Sustainability</h2>
+    <span class="spec-badge">Spec &sect;2 &mdash; Six Rs + Materials</span>
+  </div>
+
+  <div class="two-col" style="margin-bottom:1.75rem">
+    <div class="card">
+      <div class="card-accent" style="background:var(--matcha-mid)"></div>
+      <span class="card-tag" style="background:var(--matcha-pale);color:var(--nav-bg)">MORE SUSTAINABLE</span>
+      <h3>Timber / Wood</h3>
+      <ul>
+        <li><span>From <strong>managed forestry</strong> &mdash; trees cut, more planted (2+ for every 1 removed)</span></li>
+        <li><span>Trees absorb CO&#8322; as they grow &mdash; helps reduce global warming</span></li>
+        <li><span><strong>Biodegradable</strong> &mdash; will rot away naturally</span></li>
+        <li><span>FSC logo = sustainably sourced timber</span></li>
+        <li><span>Can also use recycled timber from old buildings and pallets</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background:var(--red)"></div>
+      <span class="card-tag" style="background:var(--red-pale);color:var(--red)">LESS SUSTAINABLE</span>
+      <h3>Plastic</h3>
+      <ul>
+        <li><span>Made from <strong>oil</strong> &mdash; a finite resource</span></li>
+        <li><span>Oil formed millions of years ago; cannot be replenished quickly</span></li>
+        <li><span>Most plastics are <strong>not biodegradable</strong> &mdash; remain in landfill</span></li>
+        <li><span>Recycling is possible but a large proportion still goes to landfill</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="term-grid" style="margin-bottom:1.75rem">
+    <div class="term-box"><div class="term-word">Sustainability</div><div class="term-def">Meeting today&rsquo;s needs without compromising the ability of future generations to meet their needs.</div></div>
+    <div class="term-box"><div class="term-word">Landfill</div><div class="term-def">Burying rubbish in the ground. Plastic in landfill will not biodegrade.</div></div>
+    <div class="term-box"><div class="term-word">Biodegradable</div><div class="term-def">Will break down naturally if buried in soil. Wood and PLA are biodegradable; most plastics are not.</div></div>
+    <div class="term-box"><div class="term-word">Finite resource</div><div class="term-def">A resource that will eventually run out, such as oil or coal. The opposite of renewable.</div></div>
+    <div class="term-box"><div class="term-word">CO&#8322; / Greenhouse Gas</div><div class="term-def">Carbon dioxide traps heat in the atmosphere, contributing to global warming. Trees absorb CO&#8322; as they grow.</div></div>
+    <div class="term-box"><div class="term-word">FSC Logo</div><div class="term-def">Forestry Stewardship Council. Guarantees timber is from a responsibly managed, sustainable forest.</div></div>
+  </div>
+
+  <p class="sub-heading">The Six Rs of Sustainability <span class="spec-check">Spec</span></p>
+  <div class="r-grid" style="margin-bottom:1.75rem">
+    <div class="r-card"><div class="r-letter">R</div><div class="r-name">Reduce</div><div class="r-def">Use less material. Reduce packaging. Consuming less protects finite resources.</div></div>
+    <div class="r-card"><div class="r-letter">R</div><div class="r-name">Rethink</div><div class="r-def">Is there a better way? Did we need the product at all? Could something else do the job with less damage?</div></div>
+    <div class="r-card"><div class="r-letter">R</div><div class="r-name">Refuse</div><div class="r-def">Do not buy products that harm the environment. Say no to unnecessary upgrades or wasteful packaging.</div></div>
+    <div class="r-card"><div class="r-letter">R</div><div class="r-name">Recycle</div><div class="r-def">Convert products back into basic materials to be remade. E.g. tyres into pencil cases; trolleys into chairs.</div></div>
+    <div class="r-card"><div class="r-letter">R</div><div class="r-name">Reuse</div><div class="r-def">Use the product or its parts again. Extends the product&rsquo;s life. E.g. reusable shopping bags.</div></div>
+    <div class="r-card"><div class="r-letter">R</div><div class="r-name">Repair</div><div class="r-def">Mend before throwing away. Much more sustainable than buying new. E.g. repairing phones or computers.</div></div>
+  </div>
+
+  <div class="info-box">
+    <h3>Worked Exam Question &mdash; Glass vs Plastic Bottle</h3>
+    <p style="font-size:0.85rem;color:var(--text-muted);font-style:italic;margin-bottom:1rem">&ldquo;Discuss the sustainability of a glass bottle and a plastic bottle.&rdquo;</p>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <h4 style="color:var(--matcha-mid)">Glass Bottle</h4>
+        <ul>
+          <li><span style="color:var(--matcha-mid)">&#10003;</span><span>Made from <strong>sand</strong> &mdash; a plentiful resource</span></li>
+          <li><span style="color:var(--matcha-mid)">&#10003;</span><span>Reusable and fully recyclable</span></li>
+          <li><span style="color:var(--amber)">~</span><span>Takes energy to produce &mdash; not entirely green</span></li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <h4 style="color:var(--red)">Plastic Bottle</h4>
+        <ul>
+          <li><span style="color:var(--red)">&#10007;</span><span>Made from <strong>oil</strong> &mdash; a finite resource</span></li>
+          <li><span style="color:var(--amber)">~</span><span>Can be recycled</span></li>
+          <li><span style="color:var(--red)">&#10007;</span><span>Takes energy to produce</span></li>
+          <li><span style="color:var(--red)">&#10007;</span><span>Large proportion ends up in landfill; not biodegradable</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="section" id="safety">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Health &amp; Safety</h2>
+    <span class="spec-badge">Spec &mdash; Safe Working Practices</span>
+  </div>
+
+  <div class="warning-note" style="margin-bottom:1.75rem">
+    <strong>Key exam tip:</strong> Do not confuse general school rules with health and safety rules. Only give rules that physically keep you safe in the workshop.
+  </div>
+
+  <p class="sub-heading">Safety Signs</p>
+  <div class="sign-row" style="margin-bottom:1.75rem">
+    <div class="sign-card red">
+      <div class="sign-type">Red &mdash; Prohibitive</div>
+      <div class="sign-desc">Circle with a line through it. Tells you <strong>not to do something</strong>. E.g. &ldquo;Do not enter&rdquo;, &ldquo;Do not use this machinery&rdquo;.</div>
+    </div>
+    <div class="sign-card blue">
+      <div class="sign-type">Blue &mdash; Mandatory</div>
+      <div class="sign-desc">Tells you that you <strong>must do something</strong>. E.g. &ldquo;Wear gloves when using this equipment&rdquo;, &ldquo;Safety goggles must be worn&rdquo;.</div>
+    </div>
+    <div class="sign-card yellow">
+      <div class="sign-type">Yellow &mdash; Warning</div>
+      <div class="sign-desc">Warns you of <strong>danger</strong>. E.g. &ldquo;Wet floor&rdquo;, &ldquo;High voltage&rdquo;, &ldquo;Flammable materials&rdquo;.</div>
+    </div>
+    <div class="sign-card green-sign">
+      <div class="sign-type">Green &mdash; Safe Condition</div>
+      <div class="sign-desc">Indicates safety information such as <strong>emergency exits</strong>, first aid points, and fire assembly areas.</div>
+    </div>
+  </div>
+
+  <p class="sub-heading">Safety Equipment</p>
+  <div class="grid grid-2" style="margin-bottom:1.75rem">
+    <div class="card"><div class="card-accent" style="background:var(--matcha-mid)"></div><h3>Safety Goggles</h3><ul style="margin-top:0.6rem"><li><span>Protect eyes from flying particles and debris</span></li><li><span>Worn when using machines, chisels, and soldering iron</span></li></ul></div>
+    <div class="card"><div class="card-accent" style="background:var(--blue)"></div><h3>Ear Defenders</h3><ul style="margin-top:0.6rem"><li><span>Protect hearing from loud machines such as the angle grinder</span></li><li><span>Especially important for long-term hearing protection</span></li></ul></div>
+    <div class="card"><div class="card-accent" style="background:var(--amber)"></div><h3>Dust Mask</h3><ul style="margin-top:0.6rem"><li><span>Protects lungs from inhaling dust and small particles</span></li><li><span>Used when sanding by hand or with a machine</span></li></ul></div>
+    <div class="card"><div class="card-accent" style="background:#d97706"></div><h3>Leather Gloves</h3><ul style="margin-top:0.6rem"><li><span>Used for handling <strong>hot metal</strong></span></li><li><span>Do not wear when using a pillar drill &mdash; can get caught and cause injury</span></li></ul></div>
+    <div class="card"><div class="card-accent" style="background:var(--purple)"></div><h3>Face Shield</h3><ul style="margin-top:0.6rem"><li><span>Covers whole face &mdash; used for wood turning</span></li><li><span>Protects from larger flying particles</span></li></ul></div>
+    <div class="card"><div class="card-accent" style="background:var(--red)"></div><h3>Welding Mask</h3><ul style="margin-top:0.6rem"><li><span>Protects face and eyes from <strong>UV light</strong> during arc welding</span></li><li><span>UV can cause severe eye damage</span></li></ul></div>
+  </div>
+
+  <p class="sub-heading">Workshop Safety Rules</p>
+  <div class="grid grid-2" style="margin-bottom:1.75rem">
+    <div class="card"><div class="card-accent" style="background:var(--amber)"></div><h3>Tying Back Long Hair</h3><p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.5rem;line-height:1.6">Hair can catch in rotating machinery such as a pillar drill, or on the soldering iron &mdash; a serious hazard.</p></div>
+    <div class="card"><div class="card-accent" style="background:var(--matcha-mid)"></div><h3>Wearing an Apron</h3><p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.5rem;line-height:1.6">Protects clothes from paint and glue. Cotton aprons are fire retardant &mdash; much safer than nylon clothing.</p></div>
+    <div class="card"><div class="card-accent" style="background:var(--blue)"></div><h3>Clamp Work Securely</h3><p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.5rem;line-height:1.6">When using the pillar drill, always clamp the workpiece &mdash; prevents it spinning and causing injury.</p></div>
+    <div class="card"><div class="card-accent" style="background:var(--teal-mid)"></div><h3>Good Ventilation (Soldering)</h3><p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.5rem;line-height:1.6">Soldering fumes are harmful &mdash; ensure windows are open or work in a large open space.</p></div>
+  </div>
+
+  <div class="info-box">
+    <h3>COSHH <span class="spec-check">Spec</span></h3>
+    <p style="font-family:'Inter',sans-serif;font-size:0.78rem;color:var(--text-muted);margin-bottom:0.75rem;letter-spacing:0.02em">Control Of Substances Hazardous to Health</p>
+    <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:1rem;line-height:1.6">A set of legally required regulations that must be followed in all workshops when using substances that may damage health. All hazardous products display warning symbols.</p>
+    <div class="coshh-grid">
+      <div class="coshh-item"><strong>Oil-based paints</strong>Fumes can be harmful if inhaled</div>
+      <div class="coshh-item"><strong>Glues (e.g. Tensol)</strong>Strong solvent-based adhesives</div>
+      <div class="coshh-item"><strong>Acids</strong>Corrosive &mdash; can cause burns</div>
+      <div class="coshh-item"><strong>Sanding dust</strong>Fine particles damage lungs over time</div>
+      <div class="coshh-item"><strong>Solvents / Paint thinners</strong>Flammable and toxic if inhaled</div>
+      <div class="coshh-item"><strong>Spray paint</strong>Fine aerosol particles &mdash; respiratory hazard</div>
+    </div>
+    <div style="margin-top:1rem">
+      <p style="font-family:'Inter',sans-serif;font-size:0.68rem;font-weight:600;color:var(--text-muted);margin-bottom:0.5rem;letter-spacing:0.08em;text-transform:uppercase">COSHH Hazard Symbols Include:</p>
+      <div class="tags"><span class="tag">Toxic</span><span class="tag">Harmful</span><span class="tag">Flammable</span><span class="tag">Explosive</span><span class="tag">Dangerous to environment</span><span class="tag">Oxidising</span><span class="tag">Corrosive</span></div>
+    </div>
+    <div class="note" style="margin-top:1rem">
+      <strong>Exam questions on COSHH:</strong> &ldquo;Name three substances covered by COSHH in the workshop&rdquo; &rarr; Tensol glue, spray paint, sanding dust. &ldquo;Name two precautions when soldering&rdquo; &rarr; Wear goggles and ensure good ventilation. &ldquo;Name three precautions when using a pillar drill&rdquo; &rarr; Wear goggles, tie back hair, clamp work securely.
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="section" id="legislation">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2 class="section-title">Legislation &amp; Regulation</h2>
+    <span class="spec-badge">Spec &mdash; Legal &amp; Ethical Issues</span>
+  </div>
+
+  <div class="note" style="margin-bottom:1.75rem">
+    <strong>What the spec requires:</strong> You must be able to name relevant legislation, explain what it means for designers and manufacturers, and apply it to given situations. Questions often ask you to &ldquo;name a law that protects the consumer&rdquo; or &ldquo;explain how a designer must consider legislation.&rdquo;
+  </div>
+
+  <p class="sub-heading">Consumer Protection</p>
+  <div class="grid" style="margin-bottom:1.75rem">
+    <div class="law-card">
+      <h3>Consumer Rights Act</h3>
+      <div class="law-year">2015</div>
+      <p>Replaced earlier Sale of Goods Act and Supply of Goods and Services Act. Sets out what consumers are legally entitled to when they buy products or services.</p>
+      <ul>
+        <li><span>Products must be of <strong>satisfactory quality</strong> &mdash; free from defects and durable</span></li>
+        <li><span>Products must be <strong>fit for purpose</strong> &mdash; must do what they are intended to do</span></li>
+        <li><span>Products must be <strong>as described</strong> &mdash; must match any description given by the seller</span></li>
+        <li><span>Consumers have the right to a repair, replacement or refund if goods are faulty</span></li>
+      </ul>
+    </div>
+    <div class="law-card">
+      <h3>Trade Descriptions Act</h3>
+      <div class="law-year">1968</div>
+      <p>Makes it a criminal offence for a business to apply a false or misleading trade description to goods or services.</p>
+      <ul>
+        <li><span>Descriptions on labels, in adverts, and by sales staff must be accurate</span></li>
+        <li><span>Covers claims about material, composition, fitness for purpose, and place of manufacture</span></li>
+        <li><span>Designers and manufacturers must ensure product descriptions are truthful</span></li>
+      </ul>
+    </div>
+    <div class="law-card">
+      <h3>Product Liability (Consumer Protection Act)</h3>
+      <div class="law-year">1987</div>
+      <p>Holds manufacturers, importers and suppliers responsible if a defective product causes injury or damage to property.</p>
+      <ul>
+        <li><span>Consumers do not need to prove negligence &mdash; just that the product was defective</span></li>
+        <li><span>Encourages manufacturers to design and test products thoroughly</span></li>
+        <li><span>Applies to physical goods and components within products</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="sub-heading">Intellectual Property</p>
+  <div class="grid" style="margin-bottom:1.75rem">
+    <div class="law-card">
+      <h3>Copyright</h3>
+      <div class="law-year">Copyright, Designs and Patents Act 1988</div>
+      <p>Protects original creative works such as drawings, photographs, written work, music, and software automatically from the moment they are created.</p>
+      <ul>
+        <li><span>Lasts for the creator&rsquo;s lifetime plus 70 years</span></li>
+        <li><span>Designers cannot copy another designer&rsquo;s work without permission</span></li>
+        <li><span>No registration required; protection is automatic</span></li>
+      </ul>
+    </div>
+    <div class="law-card">
+      <h3>Patents</h3>
+      <div class="law-year">Copyright, Designs and Patents Act 1988</div>
+      <p>Protects new inventions and how they work. Gives the holder exclusive rights to make, use or sell the invention.</p>
+      <ul>
+        <li><span>Must be registered with the Intellectual Property Office (IPO)</span></li>
+        <li><span>Lasts up to <strong>20 years</strong></span></li>
+        <li><span>Inventor must disclose how the invention works upon registration</span></li>
+        <li><span>Allows the inventor to profit and prevent others copying the invention</span></li>
+      </ul>
+    </div>
+    <div class="law-card">
+      <h3>Registered Trademarks</h3>
+      <div class="law-year">Trade Marks Act 1994</div>
+      <p>Protects brand identity &mdash; logos, names, slogans and packaging that distinguish a company&rsquo;s goods from others.</p>
+      <ul>
+        <li><span>Must be registered; indicated by the &reg; symbol</span></li>
+        <li><span>Lasts 10 years and can be renewed indefinitely</span></li>
+        <li><span>Prevents competitors from using the same or very similar branding</span></li>
+      </ul>
+    </div>
+    <div class="law-card">
+      <h3>Registered Designs</h3>
+      <div class="law-year">Registered Designs Act 1949 (as amended)</div>
+      <p>Protects the visual appearance of a product &mdash; its shape, pattern, texture, colour or ornamentation.</p>
+      <ul>
+        <li><span>Must be registered with the IPO</span></li>
+        <li><span>Lasts up to <strong>25 years</strong> (renewed every 5 years)</span></li>
+        <li><span>Covers the look of the product, not how it works (that is covered by patents)</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="sub-heading">Health, Safety &amp; Environment</p>
+  <div class="grid" style="margin-bottom:1.75rem">
+    <div class="law-card">
+      <h3>Health and Safety at Work Act</h3>
+      <div class="law-year">1974</div>
+      <p>The primary piece of legislation covering occupational health and safety in the United Kingdom. Applies to all workplaces, including school workshops.</p>
+      <ul>
+        <li><span>Employers must ensure the health, safety and welfare of all employees</span></li>
+        <li><span>Employees must take reasonable care of their own safety and that of others</span></li>
+        <li><span>Risk assessments must be carried out before using equipment or materials</span></li>
+        <li><span>Manufacturers must design and make products that are safe to use</span></li>
+      </ul>
+    </div>
+    <div class="law-card">
+      <h3>COSHH Regulations</h3>
+      <div class="law-year">Control of Substances Hazardous to Health 2002</div>
+      <p>Requires employers and teachers to assess the risks from hazardous substances used in the workplace or workshop and put measures in place to control exposure.</p>
+      <ul>
+        <li><span>Hazardous substances must be identified and assessed before use</span></li>
+        <li><span>Appropriate PPE must be provided and used</span></li>
+        <li><span>Hazard symbols must be displayed on substances</span></li>
+        <li><span>Examples: Tensol glue, spray paint, sanding dust, acids, solvents</span></li>
+      </ul>
+    </div>
+    <div class="law-card">
+      <h3>Waste Electrical and Electronic Equipment (WEEE)</h3>
+      <div class="law-year">Regulations 2013</div>
+      <p>Requires manufacturers and retailers to take responsibility for the safe disposal and recycling of electronic products at end of life.</p>
+      <ul>
+        <li><span>Manufacturers must fund collection, treatment and recycling of old equipment</span></li>
+        <li><span>Retailers must accept old products when selling a replacement</span></li>
+        <li><span>Encourages designers to consider disassembly and recyclability from the start</span></li>
+        <li><span>Examples: mobile phones, computers, fridges, televisions</span></li>
+      </ul>
+    </div>
+    <div class="law-card">
+      <h3>Restriction of Hazardous Substances (RoHS)</h3>
+      <div class="law-year">Directive 2002 / Regulations 2012</div>
+      <p>Restricts the use of specific hazardous materials found in electronic and electrical equipment.</p>
+      <ul>
+        <li><span>Bans or limits substances including lead, mercury, cadmium and certain flame retardants</span></li>
+        <li><span>Applies to manufacturers producing electronic products for sale in the UK and EU</span></li>
+        <li><span>Reduces toxic materials entering landfill and the environment</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="sub-heading">Standards &amp; Marking</p>
+  <div class="grid grid-2" style="margin-bottom:1.75rem">
+    <div class="law-card">
+      <h3>British Standards (BSI)</h3>
+      <div class="law-year">Ongoing</div>
+      <p>The British Standards Institution sets voluntary standards that products must meet to demonstrate safety and quality. Meeting a standard is not always required by law, but it provides assurance to consumers and businesses.</p>
+      <ul>
+        <li><span>Products meeting a standard can display the <strong>Kitemark</strong></span></li>
+        <li><span>Covers a wide range, from cycle helmets to electrical plugs</span></li>
+        <li><span>Designers should aim to meet relevant standards at the specification stage</span></li>
+      </ul>
+    </div>
+    <div class="law-card">
+      <h3>CE Marking / UKCA Marking</h3>
+      <div class="law-year">Ongoing (UKCA introduced post-2021)</div>
+      <p>CE marking indicates a product meets European Union safety, health and environmental requirements. Since Brexit, the UK Conformity Assessed (UKCA) mark has been introduced for the UK market.</p>
+      <ul>
+        <li><span>Required for many product categories before sale in the UK or EU</span></li>
+        <li><span>Manufacturers are responsible for ensuring their products comply</span></li>
+        <li><span>Covers toys, electrical equipment, personal protective equipment, and more</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <h3>Applying Legislation in the Exam</h3>
+    <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:1rem;line-height:1.6">Exam questions on legislation typically ask you to name a relevant law and explain how it affects a designer or manufacturer. Use the structure below:</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem">
+      <div style="background:var(--matcha-pale);border:1px solid var(--border);border-radius:6px;padding:1rem">
+        <p style="font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:700;color:var(--nav-bg);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem">Question type: Consumer protection</p>
+        <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.6"><em>Name a law that protects consumers who buy a faulty product.</em><br><strong>Answer:</strong> The Consumer Rights Act 2015 means products must be of satisfactory quality, fit for purpose and as described. If faulty, the consumer is entitled to a repair, replacement or refund.</p>
+      </div>
+      <div style="background:var(--matcha-pale);border:1px solid var(--border);border-radius:6px;padding:1rem">
+        <p style="font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:700;color:var(--nav-bg);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem">Question type: Intellectual property</p>
+        <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.6"><em>A designer creates a new product shape. How can they protect it?</em><br><strong>Answer:</strong> They could register a <strong>Registered Design</strong> (protects appearance, lasts 25 years) or apply for a <strong>patent</strong> (protects the invention, lasts 20 years).</p>
+      </div>
+      <div style="background:var(--matcha-pale);border:1px solid var(--border);border-radius:6px;padding:1rem">
+        <p style="font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:700;color:var(--nav-bg);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem">Question type: Workshop legislation</p>
+        <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.6"><em>Name a law that applies to using hazardous substances in a school workshop.</em><br><strong>Answer:</strong> COSHH (Control of Substances Hazardous to Health) 2002 requires that hazardous substances are assessed, PPE is used, and hazard symbols are displayed.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="height:4rem"></div>
+
+<script>
+window.addEventListener('scroll', function() {
+  var s = document.documentElement;
+  var pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+  document.getElementById('pbar').style.width = pct + '%';
+});
+</script>
+</body>
+</html>
